@@ -1,39 +1,37 @@
-import { workshopSettings } from "./workshopSettings";
+import WorkshopSettings from "./WorkshopSettings";
 
 export interface CabinetInput {
+  type: string;
+  width: number;
+  height?: number;
+  depth?: number;
+}
+
+export interface CabinetResult {
   width: number;
   height: number;
   depth: number;
+  boardThickness: number;
+  backThickness: number;
+  shelfDepth: number;
 }
 
-export interface Part {
-  name: string;
-  width: number;
-  height: number;
-  quantity: number;
-}
+export function calculateCabinet(data: CabinetInput): CabinetResult {
 
-export function calculateBaseCabinet(input: CabinetInput): Part[] {
-  const t = workshopSettings.boardThickness;
+  const depth =
+    data.depth ??
+    WorkshopSettings.baseCabinet.depth;
 
-  return [
-    {
-      name: "جنب",
-      width: input.depth,
-      height: input.height - (t * 2),
-      quantity: 2,
-    },
-    {
-      name: "قاعدة",
-      width: input.width - (t * 2),
-      height: input.depth,
-      quantity: 1,
-    },
-    {
-      name: "قرصة",
-      width: input.width - (t * 2),
-      height: 100,
-      quantity: 2,
-    },
-  ];
+  const height =
+    data.height ??
+    WorkshopSettings.baseCabinet.height;
+
+  return {
+    width: data.width,
+    height,
+    depth,
+    boardThickness: WorkshopSettings.board.thickness,
+    backThickness: WorkshopSettings.board.backThickness,
+    shelfDepth: WorkshopSettings.baseCabinet.shelfDepth,
+  };
 }
