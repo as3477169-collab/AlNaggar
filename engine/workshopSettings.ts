@@ -1,46 +1,62 @@
-export const workshopSettings = {
-  boardThickness: 18,
-  backThickness: 6,
+export const WorkshopSettings = {
+  workshopName: "النجار",
 
-  boardSize: {
+  board: {
     width: 1220,
     height: 2440,
-  },
-
-  backBoardSize: {
-    width: 1220,
-    height: 2440,
+    thickness: 18,
+    backThickness: 6,
   },
 
   groove: {
-    depth: 6,
-    offset: 14,
+    depth: 9,
+    unified: true,
   },
 
   baseCabinet: {
     depth: 580,
     height: 780,
-    topRailWidth: 100,
     shelfDepth: 500,
+    sidesInside: true,
+    topBottomOutside: true,
   },
 
   wallCabinet: {
     depth: 350,
-    shelfDepth: 300,
+    sidesInside: true,
+    topBottomOutside: true,
   },
 
-  clearances: {
-    side: 2,
-    betweenDoors: 4,
-    hingeSide: 2,
-    builtInHandle: 35,
-  },
+  fridgeSpace: 650,
 
   drawer: {
-    standardDepth: 500,
-    vegetableDepth: 420,
+    boxDepth: 420,
     boxHeight: 80,
-    slide: "undermount",
-    vegetableSlide: "side",
+    frontGap: 4,
+    handleDeduction: 35,
+    slide: "bottom",
   },
+
+  vegetableDrawer: {
+    drawers: 3,
+    slide: "side",
+    boxDepth: 420,
+    boxHeight: 80,
+  },
+
+  ovenUnit: {
+    ovenShelfDepth: 500,
+    storageDepth: 580,
+    storageShelves: 2,
+  },
+
+  colors: [
+    "خشابي",
+    "أبيض مط",
+    "أبيض لامع",
+    "أسود مط",
+    "أسود لامع",
+  ],
 };
+
+export default WorkshopSettings;
